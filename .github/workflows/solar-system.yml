@@ -17,10 +17,10 @@ jobs:
         name: Unit Testing
         strategy:
             matrix:
-                nodejs_version: [20, 22, 24]
+                nodejs_version: [22, 24]
                 operating_system: [ubuntu-latest, macos-latest]
                 exclude:
-                    - nodejs_version: 20
+                    - nodejs_version: 22
                       operating_system: macos-latest
         runs-on: ${{ matrix.operating_system}}
         steps:
@@ -68,6 +68,6 @@ jobs:
           with:
             name: Code-Coverage-Result
             path: coverage
-            retentions-days: 5  
+            retention-days: 5  
           
           
