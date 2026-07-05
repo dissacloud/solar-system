@@ -33,7 +33,7 @@ jobs:
             node-version: ${{ matrix.nodejs_version}}
 
         - name: Cache NPM dependencies
-          uses: actions/cache@v3
+          uses: actions/cache@v6.1.0
           with: 
             path: ~/.npm
             key: ${{ runner.os }} node-modules ${{ hashFiles('package-lock.json') }}     
@@ -66,7 +66,7 @@ jobs:
             node-version: 20
 
         - name: Cache NPM dependencies
-          uses: actions/cache@v3
+          uses: actions/cache@v6.1.0
           with: 
             path: ~/.npm
             key: ${{ runner.os }} node-modules ${{ hashFiles('package-lock.json') }}    
@@ -86,5 +86,18 @@ jobs:
             name: Code-Coverage-Result
             path: coverage
             retention-days: 5  
+         
+    docker:
+        name: Containerization
+        needs: [unit-testing, code-coverage]
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v7
           
+        - name: Dockerhub Login
+          uses: docker/login-action@v4.4.0
+          with:
+            username: ${{ vars.DOCKERHUB_USERNAME}}
+            password: ${{ secrets.DOCKERHUB_PASSWORD}}    
           
