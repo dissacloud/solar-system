@@ -124,7 +124,7 @@ jobs:
             echo Testing Image URL using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
           
-      - name: Docker Push
+        - name: Docker Push
           uses: docker/build-push-action@v7
           with:
             context: .
