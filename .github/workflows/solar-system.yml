@@ -27,10 +27,10 @@ jobs:
         - name: Checkout Repository
           uses: actions/checkout@v7
 
-        - name: Setup NodeJS Version - ${{ matrix.nodejs_version}}
+        - name: Setup NodeJS Version - ${{ matrix.nodejs_version }}
           uses: actions/setup-node@v6
           with:
-            node-version: ${{ matrix.nodejs_version}}
+            node-version: ${{ matrix.nodejs_version }}
 
         - name: Cache NPM dependencies
           uses: actions/cache@v6.1.0
