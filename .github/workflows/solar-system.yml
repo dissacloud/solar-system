@@ -18,7 +18,7 @@ jobs:
         strategy:
             matrix:
                 nodejs_version: [22, 24]
-                operating_system: [ubuntu-latest, macos-latest]
+                operating_system: [ubuntu-latest]
                 exclude:
                     - nodejs_version: 22
                       operating_system: macos-latest
@@ -122,7 +122,7 @@ jobs:
             echo $IP
 
             echo Testing Image URL using wget
-            wget -q -o - 127.0.0.1:3000/live | grep live
+            wget -q -O - 127.0.0.1:3000/live | grep live
           
       # - name: Docker Push
       #     uses: docker/build-push-action@v7
